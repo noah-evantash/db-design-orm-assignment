@@ -19,9 +19,8 @@ const SymptomEditorInline = ({symptom, deleteSymptom, updateSymptom}) => {
                     <div className="col">
                         <select
                             className="form-control"
-                            value={sectionCopy.medication_name}
-                            onChange={(e)=>setSectionCopy(sectionCopy => ({...sectionCopy,
-                            medication_name: e.target.value}))}>
+                            value={symptomCopy.medication_name}
+                            onChange={(e)=>setPrescriptionCopy(symptomCopy => ({...symptomCopy, medication_name: e.target.value}))}>
                             <option>Adderall</option>
                             <option>Allegra</option>
                             <option>Ativan</option>
@@ -63,10 +62,8 @@ const SymptomEditorInline = ({symptom, deleteSymptom, updateSymptom}) => {
                             type="number"
                             className="form-control"
                             value={symptomCopy.lastUsed}
-                            onChange={(e)=>setSymptomCopy(symptomCopy => ({...symptomCopy, Dosage:
-                            parseInt(e.target.value)}))}/>
+                            onChange={(e)=>setSymptomCopy(symptomCopy => ({...symptomCopy, Dosage: parseInt(e.target.value)}))}/>
                     </div>
-
                     <div className="col-2">
                         <i className="fas fa-2x fa-check float-right margin-left-10px"
                            onClick={() => {
@@ -79,6 +76,7 @@ const SymptomEditorInline = ({symptom, deleteSymptom, updateSymptom}) => {
                            onClick={() => deleteSymptom(symptom.id)}></i>
                     </div>
                 </div>
+
             }
             {
                 !editing &&

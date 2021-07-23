@@ -7,8 +7,9 @@ const PrescriptionEditorForm = () => {
     const [prescription, setPrescription] = useState({})
     const {id} = useParams()
     const history = useHistory()
-    useEffect(() => {
+    useEffect(() => {if(id!=="new"){
         findPrescriptionById(id)
+        }
     }, []);
     const findPrescriptionById = (id) =>
         prescriptionService.findPrescriptionById(id)
@@ -34,8 +35,7 @@ const PrescriptionEditorForm = () => {
             <select
                 className="form-control margin-bottom-10px"
                 value={prescription.medication_name}
-                onChange={(e)=>setPrescription(prescription => ({...prescription, medication_name: e.target
-                .value}))}>
+                onChange={(e)=>setPrescription(prescription => ({...prescription, medication_name: e.target.value}))}>
                 <option>Adderall</option>
                 <option>Allegra</option>
                 <option>Ativan</option>
@@ -63,8 +63,7 @@ const PrescriptionEditorForm = () => {
                 type="number"
                 className="form-control margin-bottom-10px"
                 value={prescription.dosage}
-                onChange={(e)=>setPrescription(prescription => ({...prescription, dosage: parseInt(e
-                .target.value)}))}/>
+                onChange={(e)=>setPrescription(prescription => ({...prescription, dosage: parseInt(e.target.value)}))}/>
 
             <br/>
             <button

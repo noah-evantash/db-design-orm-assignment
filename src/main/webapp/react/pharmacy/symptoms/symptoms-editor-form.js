@@ -5,10 +5,12 @@ const {useParams, useHistory} = window.ReactRouterDOM;
 
 const SymptomEditorForm = () => {
     const [symptom, setSymptom] = useState({})
-    const {symptomId} = useParams()
+    const {id} = useParams()
     const history = useHistory()
     useEffect(() => {
-        findSymptomById(symptomId)
+    if(id!=="new"){
+        findSymptomById(id)
+        }
     }, []);
     const findSymptomById = (id) =>
         symptomService.findSymptomById(id)
@@ -40,8 +42,7 @@ const SymptomEditorForm = () => {
             <select
                 className="form-control margin-bottom-10px"
                 value={symptom.medication_name}
-                onChange={(e)=>setSymptom(symptom => ({...symptom, medication_name: e.target
-                .value}))}>
+                onChange={(e)=>setSymptom(symptom => ({...symptom, medication_name: e.target.value}))}>
                 <option>Adderall</option>
                 <option>Allegra</option>
                 <option>Ativan</option>
@@ -49,14 +50,14 @@ const SymptomEditorForm = () => {
                 <option>Dronabinol</option>
                 <option>Effexor</option>
                 <option>Hydrocodeine</option>
-                                            <option>Levora</option>
-                                            <option>Lexapro</option>
-                                            <option>Ocella</option>
-                                            <option>Prozac</option>
-                                            <option>Trazadone</option>
-                                            <option>Velivet</option>
-                                            <option>Welbutrin</option>
-                                            <option>Zoloft</option>
+                <option>Levora</option>
+                <option>Lexapro</option>
+                <option>Ocella</option>
+                <option>Prozac</option>
+                <option>Trazadone</option>
+                <option>Velivet</option>
+                <option>Welbutrin</option>
+                <option>Zoloft</option>
                 <option>Zyrtec</option>
             </select>
             <label>Used For</label>
@@ -74,8 +75,7 @@ const SymptomEditorForm = () => {
                         <input
                             className="form-control margin-bottom-10px"
                             value={symptom.sideEffects}
-                            onChange={(e)=>setSymptom(symptom => ({...symptom, sideEffects: e.target
-                            .value}))}/>
+                            onChange={(e)=>setSymptom(symptom => ({...symptom, sideEffects: e.target.value}))}/>
             <label>Last Used</label>
             <input type="number"
                 className="form-control margin-bottom-10px"
